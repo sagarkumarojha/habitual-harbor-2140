@@ -3,6 +3,8 @@ package com.app.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,9 +31,11 @@ public class Reservation {
 	@NotNull(message = "Can't set Reservation type as null")
 	private String reservationType;
 	
+	@JsonFormat
 	@NotNull(message = "Reservation Date should not be null or empty")
 	private LocalDate reservationDate;
 	
+	@JsonFormat
 	@NotNull(message = "Local Time should not be null")
 	private LocalDateTime localTime;
 	
