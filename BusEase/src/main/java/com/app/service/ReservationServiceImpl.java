@@ -72,6 +72,7 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public List<Reservation> viewAllReservations() throws ReservationException {
 		// TODO Auto-generated method stub
+		
 		List<Reservation> reslist = reservationDao.findAll();
 		
 		if(reslist != null) {
