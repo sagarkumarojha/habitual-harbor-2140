@@ -1,4 +1,4 @@
-package com.app.Controller;
+package com.app.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.app.Service.FeedbackServiceImpl;
+
+import com.app.service.FeedbackService;
 import com.app.model.Feedback;
 
 import jakarta.validation.Valid;
@@ -20,12 +21,12 @@ import jakarta.validation.Valid;
 public class FeebackController {
 
 	@Autowired
-	private FeedbackServiceImpl feedbackServiceImpl;
+	private FeedbackService feedbackService;
 	
 	@PutMapping("/add/{busId}")
 	public ResponseEntity<Feedback> addfeedbackHandler(@PathVariable Integer busId, @RequestBody Feedback feedback,@PathVariable Integer userId){
 	
-		Feedback feedback2 = feedbackServiceImpl.addfeedback(busId, feedback, userId);
+		Feedback feedback2 = feedbackService.addfeedback(busId, feedback, userId);
 		
 		return new ResponseEntity<>(feedback2,HttpStatus.CREATED);
 		
@@ -34,7 +35,7 @@ public class FeebackController {
 	@PutMapping("/update")
 	public ResponseEntity<Feedback> updateFeedbackHandler( @Valid @RequestBody Feedback feedback){
 		
-		Feedback f = feedbackServiceImpl.updatefeedback(feedback);
+		Feedback f = feedbackService.updatefeedback(feedback);
 		
 		return new ResponseEntity<Feedback>(f, HttpStatus.ACCEPTED);
 		
@@ -43,7 +44,7 @@ public class FeebackController {
 	@GetMapping("/view/{feedbackId}")
 	public ResponseEntity<Feedback> viewFeedbackHandler(@PathVariable("feedbackId") Integer feedbackId) {
 		
-		Feedback f = feedbackServiceImpl.viewFeedback(feedbackId);
+		Feedback f = feedbackService.viewFeedback(feedbackId);
 		
 		return new ResponseEntity<Feedback>(f, HttpStatus.FOUND);
 	}
@@ -51,7 +52,7 @@ public class FeebackController {
 	@GetMapping("/viewAll")
 	public ResponseEntity<List<Feedback>> viewAllFeedbackHandler(){
 		
-		List<Feedback> f = feedbackServiceImpl.viewAllFeedbacks();
+		List<Feedback> f = feedbackService.viewAllFeedbacks();
 		
 		return new ResponseEntity<List<Feedback>>(f, HttpStatus.FOUND);
 	}

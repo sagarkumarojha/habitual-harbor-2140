@@ -10,5 +10,7 @@ import com.app.model.Customer;
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
 	public Customer findByMobileNumber(String mobileNumber);
+
+	public Customer findByEmail(String name);
 	
 }

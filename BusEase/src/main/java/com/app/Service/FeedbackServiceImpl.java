@@ -1,14 +1,14 @@
-package com.app.Service;
+package com.app.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.app.Controller.FeebackController;
-import com.app.Exception.feedbackException;
+import com.app.exception.feedbackException;
 import com.app.model.Feedback;
 import com.app.repository.FeedbackRepository;
-
+@Service
 public class FeedbackServiceImpl implements FeedbackService{
 	
 	@Autowired

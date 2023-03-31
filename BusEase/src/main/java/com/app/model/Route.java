@@ -2,9 +2,13 @@ package com.app.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,6 +21,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Route {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,42 +36,31 @@ public class Route {
 	@NotNull(message = "Distance field should not be null")
 	private Integer distance;
 
-	public Integer getRouteId() {
-		return routeId;
-	}
-
-	public void setRouteId(Integer routeId) {
-		this.routeId = routeId;
-	}
-
-	public String getRouteFrom() {
-		return routeFrom;
-	}
-
-	public void setRouteFrom(String routeFrom) {
-		this.routeFrom = routeFrom;
-	}
-
-	public String getRouteTo() {
-		return routeTo;
-	}
-
-	public void setRouteTo(String routeTo) {
-		this.routeTo = routeTo;
-	}
-
-	public Integer getDistance() {
-		return distance;
-	}
-
-	public void setDistance(Integer distance) {
-		this.distance = distance;
-	}
-
 	
 	
-//	@OneToMany(mappedBy = "routes", cascade = CascadeType.ALL)
-//	private List<Bus> bus = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+	private List<Bus> bus = new ArrayList<>();
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Route other = (Route) obj;
+		return Objects.equals(distance, other.distance) && Objects.equals(routeFrom.toLowerCase(), other.routeFrom.toLowerCase())
+				&& Objects.equals(routeId, other.routeId) && Objects.equals(routeTo.toLowerCase(), other.routeTo.toLowerCase());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(distance, routeFrom, routeId, routeTo);
+	}
+	
+	
 	
 	
 }
