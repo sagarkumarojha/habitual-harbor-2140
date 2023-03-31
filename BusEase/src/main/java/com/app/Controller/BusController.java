@@ -1,5 +1,7 @@
 package com.app.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,9 +39,9 @@ public class BusController {
 //	update bus details by providing bus details and authorization key
 	
 	@PutMapping("/update")
-	public ResponseEntity<Bus> updateBusHandler(@RequestBody Bus bus,@RequestParam String key)throws BusException, UserException{
+	public ResponseEntity<Bus> updateBusHandler(@RequestBody Bus bus,@RequestParam String key)throws BusException{
 		
-		Bus updatedBus = busService.updateBus(bus,key);
+		Bus updatedBus = busService.updateBus(bus);
 		
 		return new ResponseEntity<Bus>(updatedBus,HttpStatus.ACCEPTED);
 		
@@ -48,9 +50,10 @@ public class BusController {
 	//	delete bus details by providing bus id and authorization key
 	
 	@DeleteMapping("/delete/{busId}")
-	public ResponseEntity<Bus> deleteBusHandler(@PathVariable("busId") Integer busId,@RequestParam String key)throws BusException, UserException{
+	public ResponseEntity<Bus> deleteBusHandler(@PathVariable("busId") Integer busId,@RequestParam String key)throws BusException{
 		
-		Bus deletedBus = busService.deleteBus(busId,key);
+		//Bus deletedBus = busService.deleteBus(busId,key);
+		Bus deletedBus = busService.deleteBus(busId);
 		
 		return new ResponseEntity<Bus>(deletedBus,HttpStatus.OK);
 	}
@@ -58,9 +61,9 @@ public class BusController {
 //	Get bus details by providing bus Id and authorization key
 	
 	@GetMapping("/view/{busId}")
-	public ResponseEntity<Bus> viewBusHandler(@PathVariable("busId") Integer busId,@RequestParam String key) throws BusException, UserException{
+	public ResponseEntity<Bus> viewBusHandler(@PathVariable("busId") Integer busId,@RequestParam String key) throws BusException{
 		
-		Bus busById = busService.viewBus(busId,key);
+		Bus busById = busService.viewBus(busId);
 		
 		return new ResponseEntity<Bus>(busById,HttpStatus.FOUND);
 		
@@ -69,9 +72,9 @@ public class BusController {
 //	Get bus details by providing bus type and authorization key
 	
 	@GetMapping("/viewBusByType/{busType}")
-	public ResponseEntity<List<Bus>> viewBusByTypeHandler(@PathVariable("busType") String busType,@RequestParam String key) throws BusException, UserException{
+	public ResponseEntity<List<Bus>> viewBusByTypeHandler(@PathVariable("busType") String busType,@RequestParam String key) throws BusException{
 		
-		List<Bus> busByType = busService.viewBusByType(busType,key);
+		List<Bus> busByType = busService.viewBusByType(busType);
 		
 		return new ResponseEntity<List<Bus>>(busByType,HttpStatus.FOUND);
 		
@@ -80,9 +83,9 @@ public class BusController {
 //	Getting  all bus details by providing authorization key
 	
 	@GetMapping("/viewAllBus")
-	public ResponseEntity<List<Bus>> viewAllBusHandler(@RequestParam String key) throws BusException, UserException{
+	public ResponseEntity<List<Bus>> viewAllBusHandler(@RequestParam String key) throws BusException{
 		
-		List<Bus> viewAllBus = busService.viewAllBus(key);
+		List<Bus> viewAllBus = busService.viewAllBuses();
 		
 		return new ResponseEntity<List<Bus>>(viewAllBus,HttpStatus.OK);
 		
