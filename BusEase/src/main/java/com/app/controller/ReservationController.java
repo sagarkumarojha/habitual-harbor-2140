@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.app.Service.ReservationService;
 import com.app.model.Reservation;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
+
+@SecurityRequirements
 @Controller
 @RequestMapping("customer/")
 public class ReservationController {

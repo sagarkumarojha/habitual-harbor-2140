@@ -12,8 +12,10 @@ import com.app.Exception.CustomerException;
 import com.app.Service.CustomerService;
 import com.app.model.Customer;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import jakarta.validation.Valid;
 
+@SecurityRequirements
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {

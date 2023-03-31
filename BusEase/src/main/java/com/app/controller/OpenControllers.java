@@ -23,8 +23,10 @@ import com.app.model.Bus;
 import com.app.model.Customer;
 import com.app.repository.CustomerRepository;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import jakarta.validation.Valid;
 
+@SecurityRequirements
 @RestController
 @RequestMapping("/public")
 public class OpenControllers {
