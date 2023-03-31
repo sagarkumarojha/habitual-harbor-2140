@@ -1,4 +1,4 @@
-package com.app.controller;
+package com.app.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.app.exception.ReservationException;
+import com.app.Service.ReservationService;
 import com.app.model.Reservation;
-import com.app.service.ReservationService;
 
 @Controller
 @RequestMapping("customer/")
