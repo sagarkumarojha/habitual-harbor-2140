@@ -1,4 +1,4 @@
-package com.app.repository;
+package com.app.model;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

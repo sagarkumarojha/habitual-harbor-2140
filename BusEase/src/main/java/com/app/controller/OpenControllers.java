@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,7 @@ import com.app.exception.BusException;
 import com.app.exception.CustomerException;
 import com.app.model.Bus;
 import com.app.model.Customer;
+import com.app.repository.CustomerRepository;
 import com.app.service.BusService;
 import com.app.service.CustomerService;
 
@@ -27,17 +30,37 @@ import jakarta.validation.Valid;
 @RequestMapping("/public")
 public class OpenControllers {
 	@Autowired
-	private CustomerService userService;
+	private CustomerService customerService;
 
 	@Autowired
 	private BusService busService;
 	
 	
 	
+
+	@Autowired
+	private CustomerRepository customerRepository;
+	
+	@GetMapping("/signIn")
+	public ResponseEntity<Customer> getLoggedInCustomerDetailsHandler(Authentication auth) throws CustomerException{
+		
+		
+		 Customer customer= customerRepository.findByEmail(auth.getName());	
+		 
+		 if (customer!=null) {
+			throw new CustomerException("Invalid Input");
+		}
+		 
+		 return new ResponseEntity<>(customer, HttpStatus.ACCEPTED);
+		
+		
+	}
+	
+	
 	@PostMapping("/users")
 	public ResponseEntity<Customer> saveUser(@Valid @RequestBody Customer user) throws CustomerException {
 		
-		Customer savedUser= userService.createCustomer(user);
+		Customer savedUser= customerService.createCustomer(user);
 		
 		return new ResponseEntity<Customer>(savedUser,HttpStatus.CREATED);
 	}

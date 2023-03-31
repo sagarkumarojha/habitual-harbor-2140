@@ -63,9 +63,10 @@ public class Customer {
 	private Role role;
 	
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "customer")
 	private List<Reservation> reservations =new ArrayList<>();
-	
+
+
 
 
 	

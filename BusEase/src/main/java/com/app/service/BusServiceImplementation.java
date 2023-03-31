@@ -11,7 +11,7 @@ import com.app.exception.BusException;
 import com.app.model.Bus;
 import com.app.model.Route;
 import com.app.repository.BusRepository;
-import com.app.repository.RouteDao;
+import com.app.repository.RouteDAO;
 
 
 
@@ -22,7 +22,7 @@ public class BusServiceImplementation implements BusService{
 	private BusRepository busRepository;
 	
 	@Autowired
-	private RouteDao routeDao;
+	private RouteDAO routeDao;
 	
 
 	@Override
@@ -30,7 +30,7 @@ public class BusServiceImplementation implements BusService{
 		Route route=routeDao.findByRouteFromAndRouteTo(bus.getRouteFrom(), bus.getRouteTo());
 		
 		if(route != null) {
-			route.getBusList().add(bus);
+			route.getBus().add(bus);
 			bus.setRoute(route);
 			return busRepository.save(bus);
 		}

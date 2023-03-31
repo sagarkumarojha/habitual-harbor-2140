@@ -45,8 +45,10 @@ public class Reservation {
 	@NotNull(message = "Destination field can't be null")
 	private String destination;
 	
-//	@ManyToOne
-//	private Bus bus;
+	@ManyToOne
+	private Bus bus;
 	
+	@ManyToOne
+	private Customer customer;
 	
 }
