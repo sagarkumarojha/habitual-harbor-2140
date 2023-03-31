@@ -1,4 +1,4 @@
-package com.app.service;
+package com.app.Service;
 
 
 
@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.exception.CustomerException;
+import com.app.Exception.CustomerException;
 import com.app.model.Customer;
 import com.app.repository.CustomerRepository;
 

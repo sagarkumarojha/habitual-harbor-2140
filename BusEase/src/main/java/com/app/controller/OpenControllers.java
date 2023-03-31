@@ -1,4 +1,4 @@
-package com.app.controller;
+package com.app.Controller;
 
 
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.exception.BusException;
-import com.app.exception.CustomerException;
+import com.app.Exception.BusException;
+import com.app.Exception.CustomerException;
+import com.app.Service.BusService;
+import com.app.Service.CustomerService;
 import com.app.model.Bus;
 import com.app.model.Customer;
 import com.app.repository.CustomerRepository;
-import com.app.service.BusService;
-import com.app.service.CustomerService;
 
 import jakarta.validation.Valid;
 

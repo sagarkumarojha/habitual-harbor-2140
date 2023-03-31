@@ -1,4 +1,4 @@
-package com.app.exception;
+package com.app.Exception;
 
 public class CustomerException extends Exception{
 	
