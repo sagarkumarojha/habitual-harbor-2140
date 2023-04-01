@@ -20,7 +20,7 @@ public class Login {
 	@Autowired
 	private CustomerRepository customerRepository;
 	
-	@GetMapping("/signIn")
+	@GetMapping("/login")
 	public ResponseEntity<Customer> getLoggedInCustomerDetailsHandler(Authentication auth) throws CustomerException{
 		
 		
