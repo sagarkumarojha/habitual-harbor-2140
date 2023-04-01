@@ -3,6 +3,7 @@ package com.app.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,14 +17,14 @@ public class AppConfig {
 	@Bean
 	 SecurityFilterChain springSecurityConfiguration(HttpSecurity http) throws Exception {
 
-		http
+		HttpBasicConfigurer<HttpSecurity> httpBasic = http
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and()
 		.csrf().disable()
 		.authorizeHttpRequests()
 		.requestMatchers( "/public/").permitAll()
 		.requestMatchers( "/admin/").hasRole("ADMIN")
-		.requestMatchers( "/customer/").hasAnyRole("ADMIN","USER")		
+		.requestMatchers( "/customers/").hasAnyRole("ADMIN","USER")
 		.anyRequest().authenticated().and()
 		.addFilterAfter(new JwtTokenGeneratorFilter(), BasicAuthenticationFilter.class)
 		.addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class)

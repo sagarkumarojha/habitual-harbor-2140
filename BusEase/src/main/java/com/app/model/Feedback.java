@@ -48,11 +48,12 @@ public class Feedback {
 	@JsonFormat(pattern = "dd-mm-yyyy")
 	private LocalDate feedbackdate;
 	
-//	@JsonIgnore
-//	@OneToOne
-////	private User user;
-//	@JsonIgnore
-//	@OneToOne
-//	private Bus bus;
+	@JsonIgnore
+	@OneToOne
+	private Customer user;
+	
+	@JsonIgnore
+	@OneToOne
+	private Bus bus;
 	
 }
