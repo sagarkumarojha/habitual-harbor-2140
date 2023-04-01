@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.Exception.ReservationException;
+import com.app.exception.ReservationException;
 import com.app.model.Reservation;
 import com.app.repository.ReservationDAO;
 

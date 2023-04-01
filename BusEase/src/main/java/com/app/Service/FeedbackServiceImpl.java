@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.Exception.feedbackException;
+import com.app.exception.feedbackException;
 import com.app.model.Feedback;
 import com.app.repository.FeedbackRepository;
 @Service

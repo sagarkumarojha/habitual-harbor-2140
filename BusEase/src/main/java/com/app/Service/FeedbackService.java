@@ -2,7 +2,7 @@ package com.app.Service;
 
 import java.util.List;
 
-import com.app.Exception.feedbackException;
+import com.app.exception.feedbackException;
 import com.app.model.Feedback;
 
 public interface FeedbackService {

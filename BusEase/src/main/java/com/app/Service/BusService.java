@@ -2,7 +2,7 @@ package com.app.Service;
 
 import java.util.List;
 
-import com.app.Exception.BusException;
+import com.app.exception.BusException;
 import com.app.model.Bus;
 
 public interface BusService {

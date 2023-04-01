@@ -1,4 +1,4 @@
-package com.app.Exception;
+package com.app.exception;
 
 public class RouteException extends RuntimeException{
 	

@@ -1,4 +1,4 @@
-package com.app.Controller;
+package com.app.controller;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.app.Exception.BusException;
 import com.app.Service.BusService;
 import com.app.Service.BusServiceImplementation;
+import com.app.exception.BusException;
 import com.app.model.Bus;
 
 public class BusController {
