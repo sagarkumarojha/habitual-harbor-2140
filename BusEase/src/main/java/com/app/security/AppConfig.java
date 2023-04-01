@@ -21,7 +21,7 @@ public class AppConfig {
 		.and()
 		.csrf().disable()
 		.authorizeHttpRequests()
-		.requestMatchers( "/public/**").permitAll()
+		.requestMatchers( "/swagger-ui/index.html","/public/**").permitAll()
 		.requestMatchers( "/admin/**").hasRole("ADMIN")
 		.requestMatchers( "/customer/**").hasAnyRole("ADMIN","USER")		
 		.anyRequest().authenticated().and()
@@ -34,6 +34,7 @@ public class AppConfig {
 		return http.build();
 
 	}
+	
 
 	@Bean
 	 PasswordEncoder passwordEncoder() {
