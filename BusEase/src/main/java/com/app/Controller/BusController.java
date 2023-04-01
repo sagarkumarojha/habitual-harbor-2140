@@ -1,4 +1,4 @@
-package com.app.Controller;
+package com.app.controller;
 
 import java.util.List;
 
@@ -15,9 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
 import com.app.Exception.BusException;
 import com.app.Service.BusService;
+=======
+import com.app.exception.BusException;
+>>>>>>> b0bb5010636b565507d89b1e85e4275ea27ff603
 import com.app.model.Bus;
+import com.app.service.BusService;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityRequirements;

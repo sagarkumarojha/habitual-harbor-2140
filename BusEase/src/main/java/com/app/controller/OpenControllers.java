@@ -1,7 +1,8 @@
-package com.app.Controller;
+package com.app.controller;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.Exception.BusException;
-import com.app.Exception.CustomerException;
-import com.app.Service.BusService;
-import com.app.Service.CustomerService;
+import com.app.exception.BusException;
+import com.app.exception.CustomerException;
 import com.app.model.Bus;
 import com.app.model.Customer;
 import com.app.repository.CustomerRepository;
+import com.app.service.BusService;
+import com.app.service.CustomerService;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import jakarta.validation.Valid;
@@ -37,7 +38,6 @@ public class OpenControllers {
 	private BusService busService;
 	
 	
-	
 
 	@Autowired
 	private CustomerRepository customerRepository;
@@ -46,19 +46,19 @@ public class OpenControllers {
 	public ResponseEntity<Customer> getLoggedInCustomerDetailsHandler(Authentication auth) throws CustomerException{
 		
 		
-		 Customer customer= customerRepository.findByEmail(auth.getName());	
+		Optional< Customer> customer= customerRepository.findByEmail(auth.getName());	
 		 
-		 if (customer!=null) {
+		 if (customer.isEmpty()) {
 			throw new CustomerException("Invalid Input");
 		}
 		 
-		 return new ResponseEntity<>(customer, HttpStatus.ACCEPTED);
+		 return new ResponseEntity<>(customer.get(), HttpStatus.ACCEPTED);
 		
 		
 	}
 	
 	
-	@PostMapping("/users")
+	@PostMapping("/customers")
 	public ResponseEntity<Customer> saveUser(@Valid @RequestBody Customer user) throws CustomerException {
 		
 		Customer savedUser= customerService.createCustomer(user);

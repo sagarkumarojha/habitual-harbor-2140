@@ -1,4 +1,4 @@
-package com.app.Controller;
+package com.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.Exception.CustomerException;
-import com.app.Service.CustomerService;
+import com.app.service.CustomerService;
+import com.app.exception.CustomerException;
 import com.app.model.Customer;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirements;

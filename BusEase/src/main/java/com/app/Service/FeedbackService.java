@@ -1,8 +1,8 @@
-package com.app.Service;
+package com.app.service;
 
 import java.util.List;
 
-import com.app.Exception.feedbackException;
+import com.app.exception.feedbackException;
 import com.app.model.Feedback;
 
 public interface FeedbackService {

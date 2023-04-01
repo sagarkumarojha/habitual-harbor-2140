@@ -21,9 +21,9 @@ public class AppConfig {
 		.and()
 		.csrf().disable()
 		.authorizeHttpRequests()
-		.requestMatchers( "/public/").permitAll()
-		.requestMatchers( "/admin/").hasRole("ADMIN")
-		.requestMatchers( "/customer/").hasAnyRole("ADMIN","USER")		
+		.requestMatchers( "/swagger-ui/index.html","/public/**").permitAll()
+		.requestMatchers( "/admin/**").hasRole("ADMIN")
+		.requestMatchers( "/customer/**").hasAnyRole("ADMIN","USER")		
 		.anyRequest().authenticated().and()
 		.addFilterAfter(new JwtTokenGeneratorFilter(), BasicAuthenticationFilter.class)
 		.addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class)
@@ -34,6 +34,7 @@ public class AppConfig {
 		return http.build();
 
 	}
+	
 
 	@Bean
 	 PasswordEncoder passwordEncoder() {

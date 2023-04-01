@@ -1,13 +1,15 @@
-package com.app.Service;
+package com.app.service;
 
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.app.Exception.CustomerException;
+import com.app.exception.CustomerException;
 import com.app.model.Customer;
 import com.app.repository.CustomerRepository;
 
@@ -16,29 +18,35 @@ import com.app.repository.CustomerRepository;
 public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerRepository userDao;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 
 	
 	@Override
-	public Customer createCustomer(Customer user) throws CustomerException {
+	public Customer createCustomer(Customer customer) throws CustomerException {
 		
-		Customer existingUser= userDao.findByMobileNumber(user.getMobileNumber());
+		Optional<Customer> existingUser= userDao.findByEmail(customer.getMobileNumber());
 		
-		if(existingUser != null) 
-			throw new CustomerException("User already registered with this Mobile number!");
+		if(existingUser.isPresent()) 
 			
+			throw new CustomerException("User already registered with this Mobile number!");
+
 		
-		return userDao.save(user);
+		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+		
+		return userDao.save(customer);
 	
 	}
 	@Override
-	public Customer updateCustomer(Customer user) throws CustomerException {  
+	public Customer updateCustomer(Customer customer) throws CustomerException {  
 		
 		
-		Customer existingUser= userDao.findByMobileNumber(user.getMobileNumber());
+Optional<Customer> existingUser= userDao.findByEmail(customer.getMobileNumber());
 		
-		
-		if(existingUser !=null) {
-			return userDao.save(user);
+	
+		if(existingUser.isPresent()) {
+			return userDao.save(customer);
 		}
 		else
 			throw new CustomerException("Invalid User Details! please login first.");

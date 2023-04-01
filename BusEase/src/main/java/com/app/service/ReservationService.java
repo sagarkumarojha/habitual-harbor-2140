@@ -1,9 +1,9 @@
-package com.app.Service;
+package com.app.service;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import com.app.Exception.ReservationException;
+import com.app.exception.ReservationException;
 import com.app.model.Reservation;
 
 public interface ReservationService {
