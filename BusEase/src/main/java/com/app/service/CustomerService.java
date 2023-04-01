@@ -1,8 +1,8 @@
-package com.app.Service;
+package com.app.service;
 
 import java.util.List;
 
-import com.app.Exception.CustomerException;
+import com.app.exception.CustomerException;
 import com.app.model.Customer;
 
 

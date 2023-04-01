@@ -2,6 +2,6 @@ package com.app.model;
 
 public enum Role {
 	
-	ADMIN,CUSTOMER;
+	ROLE_ADMIN,ROLE_CUSTOMER;
 
 }

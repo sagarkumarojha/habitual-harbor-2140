@@ -1,4 +1,4 @@
-package com.app.Controller;
+package com.app.controller;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.Service.RouteServiceImpl;
+import com.app.service.RouteService;
 import com.app.model.Route;
 
 import jakarta.validation.Valid;
@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 @RequestMapping("admin/")
 public class RouteController {
 	@Autowired
-	private RouteServiceImpl rService;
+	private RouteService rService;
 
 	@PostMapping("/addRoute")
 	@CrossOrigin

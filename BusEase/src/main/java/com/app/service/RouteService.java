@@ -1,8 +1,9 @@
-package com.app.Service;
+
+package com.app.service;
 
 import java.util.List;
 
-import com.app.Exception.RouteException;
+import com.app.exception.RouteException;
 import com.app.model.Route;
 
 public interface RouteService {

@@ -1,4 +1,4 @@
-package com.app.Controller;
+package com.app.controller;
 
 import java.util.List;
 
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.Exception.BusException;
-import com.app.Exception.CustomerException;
-import com.app.Service.BusService;
-import com.app.Service.CustomerService;
+import com.app.exception.BusException;
+import com.app.exception.CustomerException;
 import com.app.model.Bus;
 import com.app.model.Customer;
+import com.app.service.BusService;
+import com.app.service.CustomerService;
 
 import jakarta.validation.Valid;
 
