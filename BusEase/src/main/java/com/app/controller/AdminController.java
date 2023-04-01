@@ -21,8 +21,10 @@ import com.app.model.Customer;
 import com.app.service.BusService;
 import com.app.service.CustomerService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import jakarta.validation.Valid;
 
+@SecurityRequirements
 @RestController
 @RequestMapping("/admin")
 public class AdminController {

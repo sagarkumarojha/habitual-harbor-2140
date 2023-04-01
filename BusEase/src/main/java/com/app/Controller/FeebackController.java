@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.service.FeedbackService;
 import com.app.model.Feedback;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import jakarta.validation.Valid;
 
+@SecurityRequirements
 @RestController
 @RequestMapping("/feedback")
 public class FeebackController {

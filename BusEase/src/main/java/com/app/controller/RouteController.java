@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.service.RouteService;
 import com.app.model.Route;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import jakarta.validation.Valid;
 
+@SecurityRequirements
 @RestController
 @RequestMapping("admin/")
 public class RouteController {
