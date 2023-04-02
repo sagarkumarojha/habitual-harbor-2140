@@ -79,7 +79,7 @@ public class AdminController {
 	}
 	
 	@DeleteMapping("/bus/{busId}")
-	public ResponseEntity<Bus> DeleteBus(@PathVariable("busId") Integer busId) throws BusException{
+	public ResponseEntity<Bus> DeleteBus(@PathVariable Integer busId) throws BusException{
 		
 		Bus bus=busService.deleteBus(busId);
 		

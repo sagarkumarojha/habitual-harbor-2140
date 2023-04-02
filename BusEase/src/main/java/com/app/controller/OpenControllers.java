@@ -64,8 +64,8 @@ public class OpenControllers {
 		return new ResponseEntity<Customer>(savedUser,HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/bus")
-	public ResponseEntity<Bus> getBusesById(@RequestParam Integer busId) throws BusException{
+	@GetMapping("/bus/{busId}")
+	public ResponseEntity<Bus> getBusesById(@PathVariable Integer busId) throws BusException{
 		
 		Bus bus=busService.viewBus(busId);
 		
