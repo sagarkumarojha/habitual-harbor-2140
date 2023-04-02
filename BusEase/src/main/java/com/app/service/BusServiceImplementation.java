@@ -28,6 +28,7 @@ public class BusServiceImplementation implements BusService{
 	@Override
 	public Bus addBus(Bus bus) throws BusException {
 		Route route=routeDao.findByRouteFromAndRouteTo(bus.getRouteFrom(), bus.getRouteTo());
+		System.out.println(route);
 		
 		if(route != null) {
 			route.getBus().add(bus);

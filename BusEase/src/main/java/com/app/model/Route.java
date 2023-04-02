@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Route {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer routeId;
 	
 	@NotNull(message = "Route from field should not be empty")
@@ -38,7 +38,7 @@ public class Route {
 
 	
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
 	private List<Bus> bus = new ArrayList<>();
 	

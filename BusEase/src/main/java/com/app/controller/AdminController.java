@@ -67,7 +67,7 @@ public class AdminController {
 		
 		Bus newBus=busService.addBus(bus);
 		
-		return new ResponseEntity<Bus>(newBus,HttpStatus.CREATED);
+		return new ResponseEntity<Bus>(newBus,HttpStatus.OK);
 	}
 	
 	@PutMapping("/bus")

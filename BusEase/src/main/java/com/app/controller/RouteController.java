@@ -21,7 +21,7 @@ import com.app.model.Route;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("admin/")
+@RequestMapping("/admin")
 public class RouteController {
 	@Autowired
 	private RouteService rService;

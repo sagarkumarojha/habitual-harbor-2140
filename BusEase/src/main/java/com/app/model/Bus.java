@@ -28,7 +28,7 @@ import lombok.ToString;
 @Entity
 public class Bus {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer busId;
 	@NotNull(message = "Bus name cannot be null!")
 	private String busName;

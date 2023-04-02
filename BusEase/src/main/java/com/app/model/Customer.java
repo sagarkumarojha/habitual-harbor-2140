@@ -32,7 +32,7 @@ import lombok.NoArgsConstructor;
 public class Customer {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userId;
 
 	@NotNull(message = "Name cannot be null!")

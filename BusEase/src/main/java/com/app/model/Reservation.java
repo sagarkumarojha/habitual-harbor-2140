@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class Reservation {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer reservationId;
 	
 	@NotNull(message = "Can't set ReservationStatus as Null")
