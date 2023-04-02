@@ -25,14 +25,6 @@ import jakarta.servlet.http.HttpServletResponse;
 public class JwtTokenValidatorFilter extends OncePerRequestFilter {
 
 
-	public static final String[] PUBLIC_URLS = {
-			
-			"/v3/api-docs",
-			"/v2/api-docs",
-			"swagger-resources/*",
-			"/swagger-ui/*",
-			"/webjars/**","/public/*","/public/signIn"
-			};
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -93,11 +85,7 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
 	
-		if(request.getServletPath().equals("/public/*")==true) {
-			return true;
-		}else {
-			return request.getServletPath().equals("/public/signIn");
-		}
+		 return request.getServletPath().matches("/public/signIn");
 	}
 
 }
