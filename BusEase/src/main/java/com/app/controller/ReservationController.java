@@ -17,19 +17,18 @@ import com.app.model.Reservation;
 import com.app.service.ReservationService;
 
 @Controller
-@RequestMapping("customer/")
+@RequestMapping("/customer")
 public class ReservationController {
 
 	@Autowired
 	private ReservationService reservationservice;
 	
-	@PostMapping("seatreservation/{busid}/{userId}")
-	@CrossOrigin
+	@PostMapping("/seatreservation/{busid}/{userId}")
 	public ResponseEntity<Reservation> addReservation( @RequestBody Reservation reservation, @PathVariable("busid") Integer busId,@PathVariable("userId") Integer userId){
 		
 		Reservation bookedReservation = reservationservice.addReservation(reservation,busId,userId);
 		
-		return new ResponseEntity<Reservation>(bookedReservation, HttpStatus.CREATED);
+		return new ResponseEntity<>(bookedReservation, HttpStatus.CREATED);
 		
 	}
 	

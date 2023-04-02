@@ -3,6 +3,8 @@ package com.app.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
@@ -31,13 +33,14 @@ public class Reservation {
 	@NotNull(message = "Can't set Reservation type as null")
 	private String reservationType;
 	
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@JsonFormat(pattern="yyyy-MM-dd")
 	@NotNull(message = "Reservation Date should not be null or empty")
 	private LocalDate reservationDate;
 	
-	@JsonFormat
+	
 	@NotNull(message = "Local Time should not be null")
-	private LocalDateTime localTime;
+	private String localTime;
 	
 	@NotNull(message = "Source field can't be null or empty")
 	private String source;

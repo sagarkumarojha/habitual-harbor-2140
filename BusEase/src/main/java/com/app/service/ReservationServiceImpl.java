@@ -7,8 +7,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.exception.BusException;
+import com.app.exception.CustomerException;
 import com.app.exception.ReservationException;
+import com.app.model.Bus;
+import com.app.model.Customer;
 import com.app.model.Reservation;
+import com.app.repository.BusRepository;
+import com.app.repository.CustomerRepository;
 import com.app.repository.ReservationDAO;
 
 @Service
@@ -17,10 +23,21 @@ public class ReservationServiceImpl implements ReservationService {
 	@Autowired
 	private ReservationDAO reservationDao;
 	
+	@Autowired
+	private BusRepository busRepository;
+	
+	@Autowired
+	private CustomerRepository customerRepository;
+	
 	
 	@Override
 	public Reservation addReservation(Reservation reservation, Integer busId, Integer userid)
 			throws ReservationException {
+		Bus bus = busRepository.findById(busId).orElseThrow(() -> new BusException("Bus not found with given id"));
+		Customer customer = customerRepository.findById(userid).orElseThrow(() -> new CustomerException("User not found with given id"));
+		
+		reservation.setBus(bus);
+		reservation.setCustomer(customer);
 		Reservation reserve = reservationDao.save(reservation);
 		
 		return reserve;
