@@ -3,6 +3,8 @@ package com.app.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.stereotype.Service;
 
 import com.app.exception.RouteException;
@@ -13,6 +15,7 @@ import com.app.repository.RouteDAO;
 @Service
 public class RouteServiceImpl implements RouteService{
 
+	@Autowired
 	private RouteDAO routeDao;
 	
 	@Override
@@ -22,7 +25,9 @@ public class RouteServiceImpl implements RouteService{
 //		route.setBuslist(busList);
 	
 		
-		return  routeDao.save(route);
+		Route r = routeDao.save(route);
+		if(r ==null) throw new RouteException("route not added");
+		return r;
 		
 		
 	}
