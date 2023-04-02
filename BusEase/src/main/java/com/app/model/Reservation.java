@@ -31,7 +31,7 @@ public class Reservation {
 	@NotNull(message = "Can't set Reservation type as null")
 	private String reservationType;
 	
-	@JsonFormat
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@NotNull(message = "Reservation Date should not be null or empty")
 	private LocalDate reservationDate;
 	

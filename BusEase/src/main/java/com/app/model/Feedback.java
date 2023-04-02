@@ -2,9 +2,12 @@ package com.app.model;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -44,15 +47,20 @@ public class Feedback {
 	
 	private String comments;
 	
-	@PastOrPresent(message = "Please add the Persent Or Past Date")
-	@JsonFormat(pattern = "dd-mm-yyyy")
+	@PastOrPresent(message = "Please add a present or past date")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate feedbackdate;
+	
+	@Column(name = "user_user_id")
+	private Integer userId;
+	@Column(name = "bus_bus_id")
+	private Integer busId;
 	
 //	@JsonIgnore
 //	@OneToOne
-////	private User user;
+//	private Customer user;
 //	@JsonIgnore
 //	@OneToOne
 //	private Bus bus;
-	
+//	
 }

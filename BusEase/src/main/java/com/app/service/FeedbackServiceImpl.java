@@ -16,8 +16,11 @@ public class FeedbackServiceImpl implements FeedbackService{
 	
 	@Override
 	public Feedback addfeedback(Integer busId, Feedback feedback,Integer userId) throws feedbackException {
-		
+		feedback.setBusId(busId);
+		feedback.setUserId(userId);
+		System.out.println(feedback);
 		Feedback feedback2 = feedbackRepository.save(feedback);
+		
 		
 		return feedback2;
 	}
@@ -29,12 +32,14 @@ public class FeedbackServiceImpl implements FeedbackService{
 		
 		Feedback f = feedbackRepository.findById(feedback.getFeedbackId()).orElseThrow(() -> new feedbackException("Feedback with Id " + feedback.getFeedbackId() + " does not exist"));
 		
-		if (feedback.getComments() != null) f.setComments(feedback.getComments());
-		if (feedback.getDriverRating() != null) f.setDriverRating(feedback.getDriverRating());
-		if (feedback.getServiceRating() != null) f.setServiceRating(feedback.getServiceRating());
-		if (feedback.getOverallRating() != null) f.setOverallRating(feedback.getOverallRating());
+	    
 		
-		Feedback updated = feedbackRepository.save(f);
+//		if (feedback.getComments() != null) f.setComments(feedback.getComments());
+//		if (feedback.getDriverRating() != null) f.setDriverRating(feedback.getDriverRating());
+//		if (feedback.getServiceRating() != null) f.setServiceRating(feedback.getServiceRating());
+//		if (feedback.getOverallRating() != null) f.setOverallRating(feedback.getOverallRating());
+//		
+		Feedback updated = feedbackRepository.save(feedback);
 		
 		return updated;
 		
