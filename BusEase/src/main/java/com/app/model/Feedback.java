@@ -51,16 +51,16 @@ public class Feedback {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate feedbackdate;
 	
-	@Column(name = "user_user_id")
-	private Integer userId;
-	@Column(name = "bus_bus_id")
-	private Integer busId;
+//	@Column(name = "user_user_id")
+//	private Integer userId;
+//	@Column(name = "bus_bus_id")
+//	private Integer busId;
 	
-//	@JsonIgnore
-//	@OneToOne
-//	private Customer user;
-//	@JsonIgnore
-//	@OneToOne
-//	private Bus bus;
-//	
+	@JsonIgnore
+	@OneToOne
+	private Customer user;
+	@JsonIgnore
+	@OneToOne
+	private Bus bus;
+	
 }

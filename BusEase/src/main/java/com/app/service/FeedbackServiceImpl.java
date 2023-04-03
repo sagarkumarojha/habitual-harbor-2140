@@ -5,8 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.exception.BusException;
 import com.app.exception.feedbackException;
+import com.app.model.Bus;
+import com.app.model.Customer;
 import com.app.model.Feedback;
+import com.app.repository.BusRepository;
+import com.app.repository.CustomerRepository;
 import com.app.repository.FeedbackRepository;
 @Service
 public class FeedbackServiceImpl implements FeedbackService{
@@ -14,11 +19,21 @@ public class FeedbackServiceImpl implements FeedbackService{
 	@Autowired
 	private FeedbackRepository feedbackRepository;
 	
+	@Autowired
+	private BusRepository busRepository;
+	
+	@Autowired
+	private CustomerRepository customerRepository;
+	
 	@Override
 	public Feedback addfeedback(Integer busId, Feedback feedback,Integer userId) throws feedbackException {
-		feedback.setBusId(busId);
-		feedback.setUserId(userId);
-		System.out.println(feedback);
+		
+		Bus bus = busRepository.findById(busId).orElseThrow(() -> new BusException("Bus not Found With id :"+busId));
+		Customer customer = customerRepository.findById(userId).orElseThrow(() -> new BusException("User not Found With id :"+userId));
+		
+		feedback.setBus(bus);
+		feedback.setUser(customer);
+//		System.out.println(feedback);
 		Feedback feedback2 = feedbackRepository.save(feedback);
 		
 		
