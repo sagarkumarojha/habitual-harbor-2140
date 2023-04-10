@@ -41,7 +41,7 @@ public class FeebackController {
 	@Autowired
 	private BusService busService;
 	
-	@PostMapping("/add/{busId}/{userId}")
+	@PostMapping("/add/{busId}")
 	public ResponseEntity<Feedback> addfeedbackHandler(Authentication auth,@PathVariable Integer busId, @RequestBody Feedback feedback) {
 		String username=(String) auth.getPrincipal();
 		Customer customer = customerRepository.findByEmail(username).orElseThrow(() -> new BusException("Please SignIn First"));

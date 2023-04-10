@@ -42,7 +42,7 @@ public class ReservationController {
 	@Autowired
 	private CustomerRepository customerRepository;
 	
-	@PostMapping("/seatreservation/{busid}/{userId}/{seats}")
+	@PostMapping("/seatreservation/{busid}/{seats}")
 	public ResponseEntity<Reservation> addReservation(Authentication auth, @PathVariable("busid") Integer busId,@PathVariable("seats") Integer seats){
 		
 		String username=(String) auth.getPrincipal();
