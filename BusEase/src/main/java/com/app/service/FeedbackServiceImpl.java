@@ -26,10 +26,10 @@ public class FeedbackServiceImpl implements FeedbackService{
 	private CustomerRepository customerRepository;
 	
 	@Override
-	public Feedback addfeedback(Integer busId, Feedback feedback,Integer userId) throws feedbackException {
+	public Feedback addfeedback(Integer busId, Feedback feedback,String username) throws feedbackException {
 		
 		Bus bus = busRepository.findById(busId).orElseThrow(() -> new BusException("Bus not Found With id :"+busId));
-		Customer customer = customerRepository.findById(userId).orElseThrow(() -> new BusException("User not Found With id :"+userId));
+		Customer customer = customerRepository.findByEmail(username).orElseThrow(() -> new BusException("User not Found With id :"+username));
 		
 		feedback.setBus(bus);
 		feedback.setUser(customer);

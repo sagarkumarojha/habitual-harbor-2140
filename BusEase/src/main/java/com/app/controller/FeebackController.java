@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ import com.app.exception.CustomerException;
 import com.app.model.Bus;
 import com.app.model.Customer;
 import com.app.model.Feedback;
+import com.app.repository.CustomerRepository;
 
 import jakarta.validation.Valid;
 
@@ -33,25 +35,23 @@ public class FeebackController {
 	
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private CustomerRepository customerRepository;
 	
 	@Autowired
 	private BusService busService;
 	
 	@PostMapping("/add/{busId}/{userId}")
-	public ResponseEntity<Feedback> addfeedbackHandler(@PathVariable Integer busId, @RequestBody Feedback feedback,@PathVariable Integer userId) {
-	
-		Customer customer = customerService.viewCustomerbyId(userId);
+	public ResponseEntity<Feedback> addfeedbackHandler(Authentication auth,@PathVariable Integer busId, @RequestBody Feedback feedback) {
+		String username=(String) auth.getPrincipal();
+		Customer customer = customerRepository.findByEmail(username).orElseThrow(() -> new BusException("Please SignIn First"));
 		Bus bus = busService.viewBus(busId);
-		
-		if(customer == null) {
-			throw new CustomerException("Incorrect User Id");
-		}
 		
 		if(bus == null) {
 			throw new BusException("Incorrect Bus Id");
 		}
 		
-		Feedback feedback2 = feedbackService.addfeedback(busId, feedback, userId);
+		Feedback feedback2 = feedbackService.addfeedback(busId, feedback, username);
 		
 		return new ResponseEntity<>(feedback2,HttpStatus.CREATED);
 		

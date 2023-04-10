@@ -31,10 +31,10 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	
 	@Override
-	public Reservation addReservation(Reservation reservation, Integer busId, Integer userid)
+	public Reservation addReservation(Reservation reservation, Integer busId, String username)
 			throws ReservationException {
 		Bus bus = busRepository.findById(busId).orElseThrow(() -> new BusException("Bus not found with given id"));
-		Customer customer = customerRepository.findById(userid).orElseThrow(() -> new CustomerException("User not found with given id"));
+		Customer customer = customerRepository.findByEmail(username).orElseThrow(() -> new CustomerException("User not found with given id"));
 		
 		reservation.setBus(bus);
 		reservation.setCustomer(customer);
