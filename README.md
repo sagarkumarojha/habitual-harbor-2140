@@ -1,5 +1,5 @@
 # BusEasy
-<h1 align="center" id="title">BusEase</h1>
+<h1 align="center" id="title">BusEasy</h1>
 
 <p align="center"><img src="https://user-images.githubusercontent.com/58816804/229332932-597fc09b-6fa0-4829-9929-d6c685d593e5.png" alt="project-image"></p>
 
