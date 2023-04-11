@@ -43,6 +43,11 @@ Technologies used in the project:
   </div>
    </br></br>
  <div align = "center">
-<img src = "https://user-images.githubusercontent.com/58816804/229336893-c7e137a7-a83d-43f4-a0a3-33f79334d27f.png" height="600px" width="700px"/>
+<img src = "https://user-images.githubusercontent.com/58816804/229336893-c7e137a7-a83d-43f4-a0a3-33f79334d27f.png" height="600px" width="900px"/>
+</div>
+</br></br>
+<h2 text-align= "center">🎮🎮 How Spring Security Working here💻💻</h2>
+ <div align = "center">
+<img src = "https://user-images.githubusercontent.com/58816804/231059927-55a1eda3-6fa2-4031-bb2b-e727315ba658.png" height="600px" width="900px"/>
 </div>
 
